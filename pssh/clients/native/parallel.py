@@ -270,6 +270,9 @@ class ParallelSSHClient(BaseParallelSSHClient):
             self._start_tunnel_thread()
         logger.debug("Make client request for host %s, (host_i, host) in clients: %s",
                      host, (host_i, host) in self._host_clients)
+        # TODO:
+        # if sorted(hosts) != sorted([host for (_, host) in self._host_clients.keys()]):
+        #     self._cleanup_host_clients()
         if (host_i, host) not in self._host_clients \
            or self._host_clients[(host_i, host)] is None:
             _user, _port, _password, _pkey = self._get_host_config_values(host_i, host)
